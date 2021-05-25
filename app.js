@@ -1,3 +1,5 @@
+
+
 // THIS IS TO MAKE MODAL WORK MANUALLY
 $('#trigger').click(function () {
 	$('#locModal').modal({show : true});
@@ -18,6 +20,9 @@ closeButton.click( function (){
 // Init weather object
 const weather  = new Weather('Seattle','us','wa');
 
+// Init ui object
+const ui =  new UI();
+
 // Get weather on DOM load
 document.addEventListener('DOMContentLoaded', getWeather)
 
@@ -25,7 +30,7 @@ document.addEventListener('DOMContentLoaded', getWeather)
 function getWeather(){
     weather.getWeather()
     .then(results => {
-        console.log(results)
+        ui.paint(results);
     })
     .catch( err => console.log(err));
 }
