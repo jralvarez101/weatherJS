@@ -17,8 +17,14 @@ closeButton.click( function (){
     modalShown.modal('hide')
 })
 
+// Init Storage
+const storage = new Storage();
+
+// Get stored location data 
+const weatherLocation = storage.getLocationData();
+
 // Init weather object
-const weather  = new Weather('Seattle','us','wa');
+const weather  = new Weather(weatherLocation.city,weatherLocation.country,weatherLocation.state);
 
 // Init ui object
 const ui =  new UI();
@@ -29,7 +35,11 @@ document.getElementById('w-change-btn').addEventListener('click', (e) => {
     const state = document.getElementById('state').value;
     const country = document.getElementById('country').value;
 
+    //Change location
     weather.changeLocation(city,country,state);
+
+    // Set location in local storage
+    storage.setLocationData(city,country,state);
 
     // Get and display weather
     getWeather();
