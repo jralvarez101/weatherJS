@@ -16,10 +16,11 @@ class Weather{
     }
 
     // Change weather location
-    changeLocation(city, state){
+    changeLocation(city,country, state){
         // set location
         this.city = city;
         this.state = state;
+        this.country = country;
     }
 
 
